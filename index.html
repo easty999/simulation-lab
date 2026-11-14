@@ -2,9 +2,9 @@
 <html lang="en">
 <head>
   <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="theme-color" content="#eef3f5">
+  <meta name="theme-color" content="#f5f4ef">
   <meta name="description" content="CodeTrooper's small playground for bouncing balls, rotating rings and marble races. Make a run. Record a Short.">
-  <title>Simulation lab — CodeTrooper</title>
+  <title>Simulation Lab | CodeTrooper</title>
   <link rel="icon" href="./favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="./style.css">
   <script defer src="./vendor/motion.js"></script>
@@ -12,35 +12,41 @@
   <script defer src="./app.js"></script>
 </head>
 <body>
-  <header class="topbar"><a class="brand" href="./" aria-label="CodeTrooper home"><span class="brand-mark">ct.</span> CodeTrooper <span class="brand-divider">/</span> <span class="muted">playground</span></a><span class="edition">01 — THE BALL COLLECTION</span></header>
+  <a class="skip-link" href="#studio">Skip to simulations</a>
+  <header class="topbar"><a class="brand" href="./" aria-label="CodeTrooper home"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M23 5a13 13 0 1 0 6 14M22 12a7 7 0 1 0-4 11"/><circle cx="18" cy="15" r="2.5"/></svg>CodeTrooper<span class="brand-divider">/</span><span class="muted">Simulation Lab</span></a><nav aria-label="Main navigation"><a href="#studio">Play</a><a href="#recording-help">Record</a></nav></header>
   <main>
-    <div class="intro"><div><p class="eyebrow">A LITTLE PHYSICS. A LOT OF POSSIBILITIES.</p><h1>Simulation lab<span>.</span></h1><p class="subtitle">Pick an experiment. Change the rules. See what happens.</p></div><a class="help-link" href="#recording-help">Making a video <span aria-hidden="true">↗</span></a></div>
+    <section class="intro" aria-labelledby="page-title"><div><p class="eyebrow">AN INTERACTIVE STUDY OF MOTION</p><h1 id="page-title">Set it in<br><em>motion.</em></h1></div><div class="intro-copy"><p>One ball. One small change.<br>A different outcome.</p><p class="subtitle">Explore three physics experiments.<br>Make a run worth watching.</p><a class="text-link" href="#studio">Enter the lab <span aria-hidden="true">↘</span></a></div></section>
+    <section id="studio" aria-label="Interactive simulation studio">
+    <div class="studio-heading"><span class="eyebrow">CHOOSE YOUR EXPERIMENT</span><span class="studio-caption">Live, simulated physics</span></div>
     <nav class="experiments" aria-label="Experiments">
-      <button class="experiment active" data-mode="rings" aria-pressed="true"><span class="tab-number">01</span><span>Ring escape<small>Find a way out.</small></span><svg viewBox="0 0 50 50" aria-hidden="true"><path d="M40 16a18 18 0 1 1-10-8M34 21a10 10 0 1 1-9-6"/><circle cx="24" cy="25" r="3"/></svg></button>
-      <button class="experiment" data-mode="grow" aria-pressed="false"><span class="tab-number">02</span><span>Growing ball<small>Every bounce gets bigger.</small></span><svg viewBox="0 0 50 50" aria-hidden="true"><circle cx="25" cy="25" r="18"/><circle cx="22" cy="29" r="11"/></svg></button>
-      <button class="experiment" data-mode="race" aria-pressed="false"><span class="tab-number">03</span><span>Marble race<small>Pick your winner.</small></span><svg viewBox="0 0 50 50" aria-hidden="true"><circle cx="15" cy="15" r="5"/><circle cx="33" cy="20" r="5"/><circle cx="22" cy="35" r="5"/><path d="M7 45h36"/></svg></button>
+      <button class="experiment active" data-mode="rings" aria-pressed="true"><span class="tab-number">01</span>Ring escape</button>
+      <button class="experiment" data-mode="grow" aria-pressed="false"><span class="tab-number">02</span>Growing ball</button>
+      <button class="experiment" data-mode="race" aria-pressed="false"><span class="tab-number">03</span>Marble race</button>
+      <span id="tab-indicator" aria-hidden="true"></span>
     </nav>
     <div class="workspace">
       <section class="preview" aria-label="Simulation preview">
-        <div class="preview-top"><span><i class="status-dot"></i><span id="run-status">LIVE PREVIEW</span></span><span id="resolution">1080 × 1920</span></div>
-        <div class="canvas-well" id="canvas-well"><canvas id="stage" width="1080" height="1920" aria-label="Animated ring escape simulation">Your browser needs Canvas support to run these simulations.</canvas></div>
-        <div class="transport"><div class="transport-buttons"><button id="play" class="primary" aria-label="Pause simulation">Pause</button><button id="restart" title="Replay this seed (R)">↺ <span>Restart</span></button><button id="shuffle" title="Try a new seed">⤨ <span>New seed</span></button></div><button id="fullscreen" class="icon-button" aria-label="Fullscreen preview" title="Fullscreen preview">⛶</button></div>
+        <div class="preview-top"><span><i class="status-dot"></i><span id="run-status">LIVE PREVIEW</span></span><span id="resolution">1080 × 1080</span></div>
+        <div class="canvas-well" id="canvas-well"><canvas id="stage" width="1080" height="1080" aria-label="Animated ring escape simulation">Your browser needs Canvas support to run these simulations.</canvas></div>
+        <div class="transport"><div class="transport-buttons"><button id="play" class="primary" aria-label="Pause simulation">Pause</button><button id="restart" title="Replay this seed (R)">Restart</button><button id="shuffle" title="Try a new seed">New seed</button></div><button id="fullscreen" class="icon-button" aria-label="Fullscreen preview" title="Fullscreen preview"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 3H3v5m13-5h5v5M3 16v5h5m8 0h5v-5"/></svg></button></div>
       </section>
       <aside class="controls" aria-label="Simulation settings">
-        <div class="panel-heading"><h2>The setup</h2><span class="small-tag" id="mode-tag">EXPERIMENT 01</span></div>
+        <div class="panel-heading"><h2>Adjust the rules</h2><span class="small-tag" id="mode-tag">EXPERIMENT 01</span></div>
         <p class="mode-description" id="mode-description"></p>
         <div id="mode-controls" class="control-section"></div>
         <div class="control-section"><label class="range-label" for="speed">Playback speed <output id="speed-value">1×</output></label><input id="speed" type="range" min="0.5" max="2" step="0.25" value="1">
-          <div class="two-columns"><label>Seed<input id="seed" type="number" min="1" max="999999" step="1" value="42"></label><label>Frame<select id="aspect"><option value="vertical">9:16 · Shorts</option><option value="square">1:1 · Square</option></select></label></div>
+          <div class="two-columns"><label>Seed<input id="seed" type="number" min="1" max="999999" step="1" value="42"></label><label>Frame<select id="aspect"><option value="vertical">9:16 · Shorts</option><option value="square" selected>1:1 · Square</option></select></label></div>
           <div class="switch-row"><label for="trails">Ball trails</label><input id="trails" type="checkbox" checked></div>
-          <div class="palette-row"><span>Ball color</span><div class="swatches" role="group" aria-label="Ball color"><button class="swatch selected" data-color="#7dd3fc" style="--swatch:#7dd3fc" aria-label="Ice blue" aria-pressed="true"></button><button class="swatch" data-color="#a7f3d0" style="--swatch:#a7f3d0" aria-label="Mint" aria-pressed="false"></button><button class="swatch" data-color="#c4b5fd" style="--swatch:#c4b5fd" aria-label="Lilac" aria-pressed="false"></button><button class="swatch" data-color="#f9c784" style="--swatch:#f9c784" aria-label="Apricot" aria-pressed="false"></button></div></div>
+          <div class="palette-row"><span>Ball color</span><div class="swatches" role="group" aria-label="Ball color"><button class="swatch selected" data-color="#385e50" style="--swatch:#385e50" aria-label="Fern" aria-pressed="true"></button><button class="swatch" data-color="#536b84" style="--swatch:#536b84" aria-label="Slate" aria-pressed="false"></button><button class="swatch" data-color="#98664e" style="--swatch:#98664e" aria-label="Clay" aria-pressed="false"></button><button class="swatch" data-color="#292e2a" style="--swatch:#292e2a" aria-label="Ink" aria-pressed="false"></button></div></div>
         </div>
-        <div class="control-section recording"><div class="panel-heading"><h2>Make a clip</h2><span class="small-tag">SILENT · 60 FPS TARGET</span></div><label>On-screen title<input id="caption" type="text" maxlength="44" value="Can it escape every ring?"></label><div class="two-columns"><label>Clip limit<select id="duration"><option value="15">15 seconds</option><option value="30" selected>30 seconds</option><option value="60">60 seconds</option></select></label><label>Branding<select id="branding"><option value="yes">CodeTrooper</option><option value="no">None</option></select></label></div><button id="record" class="record-button"><span class="record-dot"></span> Record from start</button><div class="export-actions"><button id="snapshot">Save image ↗</button><a id="download" hidden>Download clip ↓</a></div><p class="record-note" id="record-note" role="status">Records only the canvas. Stops at the limit or shortly after the result.</p></div>
+        <div class="control-section recording"><div class="panel-heading"><h2>Keep the moment</h2><span class="small-tag">SILENT · 60 FPS TARGET</span></div><label>On-screen title<input id="caption" type="text" maxlength="44" value="Can it escape every ring?"></label><div class="two-columns"><label>Clip limit<select id="duration"><option value="15">15 seconds</option><option value="30" selected>30 seconds</option><option value="60">60 seconds</option></select></label><label>Branding<select id="branding"><option value="yes">CodeTrooper</option><option value="no">None</option></select></label></div><button id="record" class="record-button"><span class="record-dot"></span> Record from start</button><div class="export-actions"><button id="snapshot">Save still</button><a id="download" hidden>Download clip</a></div><p class="record-note" id="record-note" role="status">Records only the canvas. Stops at the limit or shortly after the result.</p></div>
       </aside>
     </div>
+    </section>
     <section class="notes" id="recording-help"><div><span class="note-number">/ HOW TO</span><h2>Your next Short starts here.</h2><p>Adjust the setup, try a seed, then record. A recording restarts the run and saves a silent video. Keep this tab visible while it records.</p></div><div><h3>Made for the frame</h3><p>Vertical clips are 1080 × 1920. The title, timer and channel name are included. Download the clip or save a still for your thumbnail.</p></div><div><h3>Small controls, big changes</h3><p><kbd>Space</kbd> pause or play · <kbd>R</kbd> restart. Settings that change the physics start a new run. A seed repeats the same starting conditions.</p></div></section>
   </main>
   <footer><span>CodeTrooper <span class="muted">/ independent experiments</span></span><span>Playful physics. Original runs. <a href="./RESEARCH.md">Research notes ↗</a></span></footer>
+  <noscript><p class="noscript">Enable JavaScript to run the simulations. All processing happens in your browser.</p></noscript>
   <div id="toast" role="status"></div>
 </body>
 </html>
